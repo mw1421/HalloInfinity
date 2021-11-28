@@ -24,6 +24,33 @@
   color: white;
 }
 
+.header {
+    background-color: orange;
+    min-width: 75vh;
+    margin-inline: 3rem;
+    font-family: Georgia;
+    border-radius: 15px;
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: -.5rem;
+}
+
+.header-secondary {
+    background-color: orange;
+    display: flex;
+    min-width: 75vh;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 3rem;
+    border-top: solid;
+    border-top-color: black;
+}
+
 .App-link {
   color: #61dafb;
 }
