@@ -1,38 +1,58 @@
+// This is the home page
+
+
 import './App.css';
 import React from 'react';
 
+var url = "https://cryptum.halodotapi.com/games/hmcc/motd";
 
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
 
-const user = {
-    firstName: 'Michael',
-    lastName: 'Williams'
+xhr.setRequestHeader("Authorization", "Cryptum-Token jJl5zGUUFK32mbkMY3MXdWsDTp9i2itKQBTds4N7UlG5N7bIGtXN3xQjOhIFCtXi");
+xhr.setRequestHeader("Cryptum-API-Version", "2.3-alpha");
+xhr.setRequestHeader("Cryptum-Telemetry-Id", "48616C6f-0000-4e00-0000-415049000021");
+
+xhr.overrideMimeType('text/xml');
+
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+        console.log(xhr.status);
+        //console.log(xhr.responseText);
+        //var json = xhr.responseText.split(',');
+        //var title = json[0]
+        //console.log(title)
+    }
 };
 
-function formatName(user) {
-    return user.firstName + ' ' + user.lastName
-}
+xhr.send();
 
-function getGreeting(user) {
-    if (user != null) {
-        return <h1>Hello, {formatName(user)}!</h1>;
-    } else {
-        return <h1>Hello, Stranger.</h1>
+
+class App extends React.Component {
+
+    render() {
+        return (
+            <div className='main'>
+                <div className='home'>
+                    <div className='home-main'>
+                        <h1>
+                            azh1n's React App
+                        </h1>
+                    </div>
+                    <div className='home-secondary'>
+                        <h3>
+                            This is to showcase some stats from the popular game "Halo Infinite".
+                        </h3>
+                    </div>
+                </div>
+                <div>
+                    Title: 
+                </div>
+
+            </div>
+        )
     }
-
 }
 
-const element = (
-    <div>
-        <h2>
-            {getGreeting(user)}
-        </h2>
-    </div>
-);
-
-function App() {
-    return (
-        element
-    );
-}
 
 export default App;
