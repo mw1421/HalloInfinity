@@ -67,12 +67,21 @@
     text-align: center;
     margin-top: 0rem;
     margin-bottom: -1rem;
+    background-color: #e4e4e4;
+    border-radius: 15px;
 }
 
 .MOTD-title {
     justify-content: center;
     text-align: center;
     padding-top: 0rem;
+    background-color: #e4e4e4;
+    border-radius: 15px;
+}
+
+.MOTD-message {
+    background-color: #e4e4e4;
+    border-radius: 15px;
 }
 
 .MOTD-image {

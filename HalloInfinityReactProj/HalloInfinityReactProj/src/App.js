@@ -11,7 +11,7 @@ class App extends React.Component {
     state = {
         loading: true,
         element: null,
-
+        playername: "RUNNINGasianMAN",
     }
 
    async componentDidMount() {
@@ -26,6 +26,20 @@ class App extends React.Component {
        const data = await response.json();
        this.setState({ element: data.data[0], loading: false })
        console.log(data)
+
+       const playername = this.state.playername
+       const url = `https://cryptum.halodotapi.com/games/hi/stats/players/${playername}/service-record/global`
+       const response2 = await fetch(url, {
+           headers: {
+               Authorization: 'Cryptum-Token jJl5zGUUFK32mbkMY3MXdWsDTp9i2itKQBTds4N7UlG5N7bIGtXN3xQjOhIFCtXi',
+               'Cryptum-Api-Version': '2.3-alpha',
+               'Content-Type': 'application/json'
+           }
+       })
+
+       const playerdata = await response2.json();
+       this.setState({ playername: playerdata.data[0], loading: false })
+       console.log(playerdata)
     }
 
     render() {
@@ -49,10 +63,12 @@ class App extends React.Component {
                         <div className='home-MOTD-small'>
                             <h2 className='MOTD-subtitle'> {this.state.element.subtitle} </h2>
                             <h4 className='MOTD-title'> {this.state.element.title} </h4>
-                            <p> {this.state.element.message} </p>
+                            <p className= 'MOTD-message'> {this.state.element.message} </p>
                             <img src={this.state.element.image_url} alt="MOTD" className='MOTD-image'/>
                         </div>}
                 </div>
+               
+
 
             </div>
         )
